@@ -1,14 +1,24 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
+    val employees = listOf(
+        Developer("Ana", 3000.0),
+        Manager("Juan", 5000.0),
+        Designer("María", 3500.0),
+        Developer("Luis", 1600.0)
+    )
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
+    println("Sistema de gestión de empleados:")
+    for (employee in employees) {
+        println("\n--------------------------------")
+
+        employee.details()
+        employee.work()
+
+        val bonus = employee.calculateAnnualBonus()
+        println("Bonus anual: $bonus €")
+
+        if (employee is Evaluable) {
+            print("Evaluación: ")
+            employee.evaluatePerformance()
+        }
     }
 }
